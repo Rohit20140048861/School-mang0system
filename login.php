@@ -1,26 +1,40 @@
-<?php include('header.php') ?>
-  <section class="bg-light vh-100 d-flex">
-    <div class="col-3 m-auto">
-      <div class="card">
-        <div class="card-body">
-          <div class="border rounded-circle mx-auto d-flex " style="width:100px;height:100px" ><i class="fa fa-user text-light fa-3x m-auto"></i></div>
-          <form action="actions/login.php" method="POST">
-            <!-- Material input -->
-                <div class="md-form">
-                  <input type="text" id="email" name="email" class="form-control">
-                  <label for="email">Your Email</label>
-                </div>
-                <!-- Material input -->
-                <div class="md-form">
-                  <input type="password" id="password" name="password" class="form-control">
-                  <label for="password">Your Password</label>
-                </div>
-            <div class="text-center">
-              <button class="btn btn-secondary" name="login">Login</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-<?php include('footer.php') ?>
+<?php
+
+//   include('../includes/config.php');
+  if (isset($_POST['login'])) {
+    $email = $_POST['email'];
+    $pass  = $_POST['password'];
+    
+    // $pass_md5 = md5($pass);
+
+    // $query = mysqli_query($db_conn,"SELECT * FROM `accounts` WHERE `email` = '$email' AND `password` = '$pass_md5'");
+
+    // if(mysqli_num_rows($query) > 0)
+    // {
+    //   $user = mysqli_fetch_object($query);
+    //   $_SESSION['login'] = true;
+    //   $_SESSION['session_id'] = uniqid();
+      
+    //   $user_type = $user->type;
+    //   $_SESSION['user_type'] = $user_type;
+    //   $_SESSION['user_id'] = $user->id;
+    //   header('Location: ../'.$user_type.'/dashboard.php');
+    //   exit();
+    // }
+    // else 
+    if ($email == 'admin@example.com' && $pass == 'admin@sms') {
+
+     
+      session_start();
+      $_SESSION['login'] = true;
+      header('Location: ../admin/dashboard1.php');
+       
+    }
+    else {
+      echo 'Invailid Credentials';
+    }
+  }
+
+
+
+ 
